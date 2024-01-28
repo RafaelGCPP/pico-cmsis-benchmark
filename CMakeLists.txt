@@ -25,7 +25,12 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(pico-cmsis-benchmark pico-cmsis-benchmark.c )
+add_executable(pico-cmsis-benchmark
+   pico-cmsis-benchmark.c 
+   real-fft-tests.c
+   real-fft-tests-fixed-point.c
+
+)
 
 pico_set_program_name(pico-cmsis-benchmark "pico-cmsis-benchmark")
 pico_set_program_version(pico-cmsis-benchmark "0.1")
@@ -44,11 +49,12 @@ target_include_directories(pico-cmsis-benchmark PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}/CMSIS/CMSIS/Core/Include
   ${CMAKE_CURRENT_LIST_DIR}/CMSIS-DSP/Include  
 )
-set(CMSISCORE ${CMAKE_CURRENT_LIST_DIR}/CMSIS/CMSIS/Core)
+set(CMSISCORE ${PICO_SDK_PATH}/src/rp2_common/cmsis/stub/CMSIS/Core)
 add_subdirectory(CMSIS-DSP/Source)
 
 # Add any user requested libraries
 target_link_libraries(pico-cmsis-benchmark 
+        CMSISDSP
         )
 
 pico_add_extra_outputs(pico-cmsis-benchmark)
