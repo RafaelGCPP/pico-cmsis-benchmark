@@ -54,7 +54,7 @@ The following table presents the benchmark results for a Raspberry Pi Pico runni
 | 1024 | 1.73000&mu;s      | 0.56800&mu;s   |
 | 2048 | 3.88000&mu;s      | 1.16100&mu;s   |
 
-Compared to my [simple-fft](https://github.com/RafaelGCPP/simple-fft), one can understand why one should use optimized libraries.
+Compared to my [simple-fft](https://github.com/RafaelGCPP/simple-fft), it is easy to understand why one should use optimized libraries.
 
 | N    | Floating Point | Fixed Point |
 | ----:| --------------:| -----------:|
