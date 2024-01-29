@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include "pico/rand.h"
+#include "pico/stdlib.h"
 
 void fft_benchmark_fixed_point()
 {
@@ -31,7 +33,7 @@ void fft_benchmark_fixed_point()
         arm_rfft_init_q31(&fft_instance, n, 0, 1);
         arm_rfft_init_q31(&ifft_instance, n, 0, 1);
 
-        unsigned int start = clock();
+        unsigned int start = time_us_32();
         for (int i = 0; i < 500; i++)
         {
             long int fft[2 * n];
@@ -39,7 +41,7 @@ void fft_benchmark_fixed_point()
             arm_rfft_q31(&fft_instance, data, fft);
             arm_rfft_q31(&ifft_instance, fft, data_out);
         }
-        unsigned int elapsed = clock() - start;
+        unsigned int elapsed = time_us_32() - start;
         printf("%12.5fus per transform\n", (float)elapsed / 1000);
     }
 }

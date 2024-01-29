@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include "pico/rand.h"
+#include "pico/stdlib.h"
 
 void fft_benchmark()
 {
@@ -27,14 +29,14 @@ void fft_benchmark()
 
         arm_rfft_fast_init_f32(&instance, n);
 
-        unsigned int start = clock();
+        unsigned int start = time_us_32();
         for (int i = 0; i < 50; i++)
         {
             float fft[n];
             arm_rfft_fast_f32(&instance, data, fft, 0);
             arm_rfft_fast_f32(&instance, fft, data, 1);
         }
-        unsigned int elapsed = clock() - start;
+        unsigned int elapsed = time_us_32() - start;
         printf("%12.5fus per transform\n", (float)elapsed / 100);
     }
 }

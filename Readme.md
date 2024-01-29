@@ -44,17 +44,20 @@ Once the benchmark code is flashed to your Raspberry Pi Pico, you can run the be
 
 The following table presents the benchmark results for a Raspberry Pi Pico running at 125MHz. It shows the time per transformation for fixed and floating-point operations at different numbers of data points (N).
 
+
+
+
 | N    | Floating Point | Fixed Point |
 | ----:| --------------:| -----------:|
-| 32   | 0.03000&mu;s      | 0.01100&mu;s   |
-| 64   | 0.08000&mu;s      | 0.02600&mu;s   |
-| 128  | 0.15000&mu;s      | 0.05400&mu;s   |
-| 256  | 0.37000&mu;s      | 0.12300&mu;s   |
-| 512  | 0.81000&mu;s      | 0.25000&mu;s   |
-| 1024 | 1.73000&mu;s      | 0.56800&mu;s   |
-| 2048 | 3.88000&mu;s      | 1.16100&mu;s   |
+| 32   |     308.39001&mu;s      |     104.19200&mu;s   |
+| 64   |     707.64001&mu;s      |     246.43700&mu;s   |
+| 128  |    1531.06006&mu;s      |     509.28000&mu;s   |
+| 256  |    3537.73999&mu;s      |    1167.73206&mu;s   |
+| 512  |    7919.04980&mu;s      |    2386.26904&mu;s   |
+| 1024 |   16755.06055&mu;s      |    5492.20996&mu;s   |
+| 2048 |   37605.87891&mu;s      |   11090.58496&mu;s   |
 
-Compared to my [simple-fft](https://github.com/RafaelGCPP/simple-fft), it is easy to understand why one should use optimized libraries.
+Compared to my [simple-fft](https://github.com/RafaelGCPP/simple-fft), not much difference can be noted
 
 | N    | Floating Point | Fixed Point |
 | ----:| --------------:| -----------:|
