@@ -9,7 +9,7 @@ int main()
 {
     // vreg_set_voltage(VREG_VOLTAGE_1_15);
 
-    // set_sys_clock_khz(300000, false);
+    set_sys_clock_khz(200000, false);
     stdio_init_all();
 
     while (!tud_cdc_connected())

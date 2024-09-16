@@ -13,21 +13,21 @@ Follow these steps to install and run the benchmark:
 
 1. Clone this repository:
 
-    ```shell
-    git clone --recursive https://github.com/your-username/pico-cmsis-benchmark.git
-    ```
+   ```shell
+   git clone --recursive https://github.com/your-username/pico-cmsis-benchmark.git
+   ```
 
 2. Connect your Raspberry Pi Pico board to your computer.
 
 3. Build and flash the benchmark code to your Raspberry Pi Pico using your preferred development environment.
 
-    ```shell
-    cd pico-cmsis-benchmark
-    mkdir build
-    cd build
-    cmake ..
-    make
-    ```
+   ```shell
+   cd pico-cmsis-benchmark
+   mkdir build
+   cd build
+   cmake ..
+   make
+   ```
 
 ## Usage
 
@@ -40,32 +40,41 @@ Once the benchmark code is flashed to your Raspberry Pi Pico, you can run the be
 3. The benchmark will run and display the performance metrics on the serial terminal.
 4. The tests will restart automatically after 10 seconds.
 
-## Results 
+## Results
 
 The following table presents the benchmark results for a Raspberry Pi Pico running at 125MHz. It shows the time per transformation for fixed and floating-point operations at different numbers of data points (N).
 
+|    N |   Floating Point |      Fixed Point |
+| ---: | ---------------: | ---------------: |
+|   32 |   308.39001&mu;s |   104.19200&mu;s |
+|   64 |   707.64001&mu;s |   246.43700&mu;s |
+|  128 |  1531.06006&mu;s |   509.28000&mu;s |
+|  256 |  3537.73999&mu;s |  1167.73206&mu;s |
+|  512 |  7919.04980&mu;s |  2386.26904&mu;s |
+| 1024 | 16755.06055&mu;s |  5492.20996&mu;s |
+| 2048 | 37605.87891&mu;s | 11090.58496&mu;s |
 
+Compared to my [simple_fft](https://github.com/RafaelGCPP/simple_fft), not much difference can be noted
 
+|    N | Floating Point |   Fixed Point |
+| ---: | -------------: | ------------: |
+|   32 |    476.32&mu;s |    87.18&mu;s |
+|   64 |   1110.21&mu;s |   215.32&mu;s |
+|  128 |   2529.58&mu;s |   516.06&mu;s |
+|  256 |   5666.06&mu;s |  1203.62&mu;s |
+|  512 |  12545.85&mu;s |  2754.44&mu;s |
+| 1024 |  27511.37&mu;s |  6202.91&mu;s |
+| 2048 |  59864.60&mu;s | 13799.99&mu;s |
 
-| N    | Floating Point | Fixed Point |
-| ----:| --------------:| -----------:|
-| 32   |     308.39001&mu;s      |     104.19200&mu;s   |
-| 64   |     707.64001&mu;s      |     246.43700&mu;s   |
-| 128  |    1531.06006&mu;s      |     509.28000&mu;s   |
-| 256  |    3537.73999&mu;s      |    1167.73206&mu;s   |
-| 512  |    7919.04980&mu;s      |    2386.26904&mu;s   |
-| 1024 |   16755.06055&mu;s      |    5492.20996&mu;s   |
-| 2048 |   37605.87891&mu;s      |   11090.58496&mu;s   |
+**UPDATE**
+The following table shows the results on an RP2040 running at 200MHz. The fixed-point implementation in my [simple_fft](https://github.com/RafaelGCPP/simple_fft) appears to be faster than the CMSIS-DSP library.
 
-Compared to my [simple-fft](https://github.com/RafaelGCPP/simple-fft), not much difference can be noted
-
-| N    | Floating Point | Fixed Point |
-| ----:| --------------:| -----------:|
-| 32   | 476.32&mu;s   | 87.18&mu;s  |
-| 64   | 1110.21&mu;s  | 215.32&mu;s |
-| 128  | 2529.58&mu;s  | 516.06&mu;s |
-| 256  | 5666.06&mu;s  | 1203.62&mu;s |
-| 512  | 12545.85&mu;s | 2754.44&mu;s |
-| 1024 | 27511.37&mu;s | 6202.91&mu;s |
-| 2048 | 59864.60&mu;s | 13799.99&mu;s |
-
+| Points | Floating Point |  Fixed Point |
+| -----: | -------------: | -----------: |
+|     32 |      9.25&mu;s |   35.01&mu;s |
+|     64 |     19.28&mu;s |   82.23&mu;s |
+|    128 |     34.18&mu;s |  157.96&mu;s |
+|    256 |     79.99&mu;s |  337.63&mu;s |
+|    512 |    169.71&mu;s |  674.02&mu;s |
+|   1024 |    321.54&mu;s | 1473.98&mu;s |
+|   2048 |    949.43&mu;s | 2994.60&mu;s |

@@ -25,7 +25,7 @@ void fft_benchmark()
 
         arm_rfft_fast_instance_f32 instance;
 
-        printf("%4d-points real-valued fixed-point FFT: ", n);
+        printf("%4d-points real-valued floating-point FFT: ", n);
 
         arm_rfft_fast_init_f32(&instance, n);
 
